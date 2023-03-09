@@ -1,7 +1,7 @@
 
 
 <script lang="ts">
-import axios, { type AxiosResponse } from "axios"
+import axios from "axios"
 
 
 type Jokes = {
@@ -32,11 +32,32 @@ let url = "https://v2.jokeapi.dev/joke/Programming?type=single&amount=10";
 export default {
   data() {
     return {
-      results: []
+      results: {
+        "error": false,
+        "amount": 10,
+        "jokes": [
+          {
+            "category": "Programming",
+            "type": "single",
+            "joke": "Saying that Java is nice because it works on every OS is like saying that anal sex is nice because it works on every gender.",
+            "flags": {
+              "nsfw": true,
+              "religious": false,
+              "political": false,
+              "racist": false,
+              "sexist": false,
+              "explicit": true
+            },
+            "id": 30,
+            "safe": false,
+            "lang": "en"
+          }
+        ]
+      }
     }
   },
   mounted() {
-    axios.get<Promise<JokesObject>>(url).then(response => {
+    axios.get<JokesObject>(url).then(response => {
       this.results = response.data
     });
 
@@ -51,19 +72,19 @@ export default {
       axios.get(`https://v2.jokeapi.dev/joke/${event.target.value}?type=single&amount=10`).then(response => {
         this.results = response.data
       });
-    }
+    },
   }
-
 }
-
-
 
 </script>
 
 <template>
-  <div class="input">
+  <div class="hero">
+    <h1>Top jokes</h1>
+    <h5>Choose joke category to read 10 top jokes</h5>
+
     <label>Choose joke category</label>
-    <select class="browser-default" @change="changeJokeCategory($event)">
+    <select class="browser-default input" @change="changeJokeCategory($event)">
       <option value="Programming">Programming</option>
       <option value="Misc">Misc</option>
       <option value="Dark">Dark</option>
@@ -73,23 +94,19 @@ export default {
 
 
   <div class="jokeCards">
-    <div v-for='(result, index) in results?.jokes' :key="result.joke" :value="index" class="row">
-      <div class="col s12 m12">
-        <div class="card-panel teal">
-          <p class="white-text">
-          <p>{{ result.category }} joke:</p>
-          <span class="result.joke">{{ result.joke }}
-          </span>
-          </p>
-          <button @click="displatValue(result.joke)" class="waves-effect waves-light btn button">Add to favorites</button>
-        </div>
-      </div>
+    <div class="card-panel teal" v-for='(result, index) in results.jokes' :key="result.joke" :value="index">
+      <p class="white-text">
+      <p>{{ result.category }} joke:</p>
+      <span class="result.joke">{{ result.joke }}
+      </span>
+      </p>
+      <button @click="displatValue(result.joke)" class="waves-effect waves-light btn button">
+        Add to favorites
+      </button>
     </div>
-
   </div>
 </template>
 <style>
-
 .jokeCards {
   display: grid;
   justify-content: center;
@@ -97,14 +114,19 @@ export default {
   gap: 10px;
 }
 
-.input {
- display: grid;
- justify-content: center;
- margin: 30px 0 30px 0;
+.hero {
+  display: grid;
+  justify-items: center;
+  margin: 30px 0 30px 0;
+  gap: 20px;
 }
 
 .button {
   background-color: #ee6e73;
+}
+
+.input {
+  max-width: 200px;
 }
 </style>
 

@@ -11,7 +11,11 @@ const url = "http://localhost:3004/";
 export default {
   data() {
     return {
-      results: []
+      results: [{
+        "_id":"64095e3b13fe790dcf89cc56",
+        "joke": " Lorem ipsum",
+        "__v":0
+      }]
     }
   },
   mounted() {
