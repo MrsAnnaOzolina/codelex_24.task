@@ -1,4 +1,5 @@
-#Joke app
+# Joke app
+
 To run  this project you need to install on your computer Docker.
 then go to folder Express with command `cd Express` -->  `npm install` -->  `npm run start:nodemon` -->  `docker-compose -f stack.yml up` .
 
