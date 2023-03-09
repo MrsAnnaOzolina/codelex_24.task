@@ -7,4 +7,4 @@ Here is preview:
 
 ![ Alt text](Jokes.gif)
 
-![ Alt text](Jokes2.gif)
+![ Preview](Jokes2.gif)
