@@ -6,7 +6,7 @@ type Jokes = {
   _id: string,
   joke: string
 }
-const url = "http://localhost:3004/";
+const url = "http://localhost:3005/";
 
 export default {
   data() {
@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     removeJoke: function (_id: string) {
-      axios.delete(`http://localhost:3004/${_id}`).then(() => {
+      axios.delete(`http://localhost:3005/${_id}`).then(() => {
         axios.get(url).then(response => {
           this.results = response.data
         });
@@ -42,7 +42,7 @@ export default {
     <h1 class="jokes__title">My favorite joke list:</h1>
     <div class="col s12 m12 jokes__card" v-for='result in results'>
       <div class="card horizontal">
-        <div class="card-stacked">
+        <div class="card-stacked blue lighten-4">
           <div class="card-content">
             <p>{{ result.joke }}</p>
             <p class="result._id"></p>
@@ -68,7 +68,7 @@ export default {
 }
 
 .jokes__card {
-  margin: 40px;
+  margin: 30px 100px 30px 100px; 
 }
 </style>
 

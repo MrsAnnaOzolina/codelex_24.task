@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     displatValue: function (joke: string) {
-      axios.post("http://localhost:3004/", {
+      axios.post("http://localhost:3005/", {
         joke: joke
       })
     },
@@ -107,11 +107,15 @@ export default {
   </div>
 </template>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+body{
+  font-family: 'Nunito', sans-serif;
+}
 .jokeCards {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(2, 45vw);
-  gap: 10px;
+  gap: 50px;
 }
 
 .hero {
@@ -128,5 +132,6 @@ export default {
 .input {
   max-width: 200px;
 }
+
 </style>
 
