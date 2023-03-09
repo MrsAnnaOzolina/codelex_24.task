@@ -5,6 +5,5 @@ Then go to Jokes folder `cd Jokes` and run `npm install` --> `npm run dev`
 
 Here is preview: 
 
-![ Alt text](Jokes.gif)
+![ Alt text](Joke.gif)
 
-![ Preview](Jokes2.gif)
