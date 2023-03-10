@@ -32,28 +32,7 @@ let url = "https://v2.jokeapi.dev/joke/Programming?type=single&amount=10";
 export default {
   data() {
     return {
-      results: {
-        "error": false,
-        "amount": 10,
-        "jokes": [
-          {
-            "category": "Programming",
-            "type": "single",
-            "joke": "Saying that Java is nice because it works on every OS is like saying that anal sex is nice because it works on every gender.",
-            "flags": {
-              "nsfw": true,
-              "religious": false,
-              "political": false,
-              "racist": false,
-              "sexist": false,
-              "explicit": true
-            },
-            "id": 30,
-            "safe": false,
-            "lang": "en"
-          }
-        ]
-      }
+      results: {} as JokesObject,
     }
   },
   mounted() {
@@ -91,8 +70,6 @@ export default {
       <option value="Pun">Pun</option>
     </select>
   </div>
-
-
   <div class="jokeCards">
     <div class="card-panel teal" v-for='(result, index) in results.jokes' :key="result.joke" :value="index">
       <p class="white-text">
@@ -108,9 +85,11 @@ export default {
 </template>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
-body{
+
+body {
   font-family: 'Nunito', sans-serif;
 }
+
 .jokeCards {
   display: grid;
   justify-content: center;
@@ -132,6 +111,5 @@ body{
 .input {
   max-width: 200px;
 }
-
 </style>
 

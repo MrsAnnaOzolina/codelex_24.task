@@ -4,18 +4,15 @@ import { onMounted } from "vue";
 
 type Jokes = {
   _id: string,
-  joke: string
+  joke: string,
+  __v:number
 }
 const url = "http://localhost:3005/";
 
 export default {
   data() {
     return {
-      results: [{
-        "_id":"64095e3b13fe790dcf89cc56",
-        "joke": " Lorem ipsum",
-        "__v":0
-      }]
+      results: [] as Jokes[]
     }
   },
   mounted() {
